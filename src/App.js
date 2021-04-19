@@ -1,6 +1,9 @@
-import Expenses from "./Components/Expenses";
+// import React from "react";
+import Expenses from "./Components/Expenses/Expenses";
+import NewExpense from "./Components/NewExpense/NewExpense";
 
-function App() {
+// Arrow functions are an alternative for 'old school' functions
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -23,12 +26,24 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log(expense);
+  };
+
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses}></Expenses>
     </div>
   );
-}
+
+  // Alternative. This is why you used to import React
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   React.createElement(Expenses, { expenses: expenses })
+  // );
+};
 
 export default App;
